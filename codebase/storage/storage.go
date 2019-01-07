@@ -1,3 +1,9 @@
+/**
+
+KV storage into JSON format
+
+*/
+
 package storage
 
 import (
@@ -10,6 +16,7 @@ import (
 const JsonPath = "./storage/storage.json"
 const JsonTestPath = "./storage/storage_test.json"
 
+// Function for convert data from JSON to map
 func getStorage(isTestMode bool) map[string]string {
 	storagePath := JsonPath
 	if isTestMode {
@@ -38,6 +45,7 @@ func getStorage(isTestMode bool) map[string]string {
 	return data
 }
 
+// Function for "SET" handling
 func Set(key string, value string, isTestMode bool) {
 	storagePath := JsonPath
 	if isTestMode {
@@ -53,6 +61,7 @@ func Set(key string, value string, isTestMode bool) {
 	}
 }
 
+// Function for "GET" handling
 func Get(key string, isTestMode bool) string {
 	storage := getStorage(isTestMode)
 	value := storage[key]
@@ -60,6 +69,7 @@ func Get(key string, isTestMode bool) string {
 	return value
 }
 
+// Function for "DEL" handling
 func Del(key string, isTestMode bool) {
 	storagePath := JsonPath
 	if isTestMode {

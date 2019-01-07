@@ -1,3 +1,10 @@
+/**
+
+KV server with options for run
+-p -> port were server will be run (default 9090)
+
+*/
+
 package main
 
 import (
@@ -15,6 +22,7 @@ type command struct {
 	result chan string
 }
 
+// Function for parse arguments and run KV server
 func main() {
 	serverPort := flag.String("p", "9090", "port")
 	flag.Parse()
@@ -39,6 +47,7 @@ func main() {
 	}
 }
 
+// Function for handling connection from client to server
 func handleConnection(commands chan command, connection net.Conn) {
 	defer log.Println("Connection closed")
 	defer connection.Close()
@@ -61,6 +70,7 @@ func handleConnection(commands chan command, connection net.Conn) {
 
 }
 
+// Function for handling command from client to server
 func handleCommand(commands chan command) {
 	for cmd := range commands {
 

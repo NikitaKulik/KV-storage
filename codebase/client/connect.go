@@ -1,3 +1,11 @@
+/**
+
+KV client with options for server connection
+-p -> port where server was run (default 9090)
+-h -> host where server was run (default 127.0.0.1)
+
+*/
+
 package main
 
 import (
@@ -9,6 +17,7 @@ import (
 	"os"
 )
 
+//Function for parse client arguments and connect to server
 func main() {
 	serverPort := flag.String("p", "9090", "port")
 	serverHost := flag.String("h", "127.0.0.1", "host")

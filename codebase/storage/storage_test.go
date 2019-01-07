@@ -1,3 +1,9 @@
+/**
+
+Tests for KV data storage
+
+*/
+
 package storage
 
 import (
@@ -8,6 +14,7 @@ import (
 	"testing"
 )
 
+// Function for set up tests
 func setUp() {
 	defaultData := map[string]string{
 		"key1": "value1",
@@ -21,6 +28,7 @@ func setUp() {
 	}
 }
 
+// Function for clean tests
 func tearDown() {
 	testStorage, err := os.OpenFile(JsonTestPath, os.O_RDWR, 0644)
 	defer testStorage.Close()
@@ -37,6 +45,7 @@ func tearDown() {
 	}
 }
 
+// Wrapper for tests
 func TestMain(m *testing.M) {
 	setUp()
 	code := m.Run()
@@ -44,6 +53,7 @@ func TestMain(m *testing.M) {
 	os.Exit(code)
 }
 
+// Test for "SET" handling
 func TestSet(t *testing.T) {
 	Set("key4", "value4", true)
 	data := getStorage(true)
@@ -56,6 +66,7 @@ func TestSet(t *testing.T) {
 	}
 }
 
+// Test for "GET" handling
 func TestGet(t *testing.T) {
 	value := Get("key1", true)
 	if value != "value1" {
@@ -63,6 +74,7 @@ func TestGet(t *testing.T) {
 	}
 }
 
+// Test for "DEL" handling
 func TestDel(t *testing.T) {
 	Del("key1", true)
 	data := getStorage(true)

@@ -24,7 +24,8 @@ func main() {
 	flag.Parse()
 
 	conn, _ := net.Dial("tcp", *serverHost+":"+*serverPort)
-	fmt.Println("Client connect to -> " + *serverHost + ":" + *serverPort + "\n")
+	fmt.Printf("Client connect to -> " + *serverHost + ":" + *serverPort + "\n")
+	fmt.Println("Please enter the command:")
 	for {
 		reader := bufio.NewReader(os.Stdin)
 		text, _ := reader.ReadString('\n')
